@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="shortcut icon" type="x-icon" href="Image/Foto Bhagas.jpg">
+  <title>Kontak Bhagas Aulia</title>
+
+  <!-- Font modern -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <!-- Ikon Sosial (Font Awesome) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <style>
+    /* === Tema Luar Angkasa === */
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      color: #fff;
+      background: radial-gradient(circle at top, #1a0033, #000015 80%);
+      overflow-x: hidden;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      animation: fadeIn 1.5s ease;
+    }
+
+    /* === Efek Bintang === */
+    body::before, body::after {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 200%;
+      height: 200%;
+      background: transparent url("https://www.transparenttextures.com/patterns/stardust.png") repeat;
+      opacity: 0.3;
+      animation: stars 120s linear infinite;
+      z-index: -1;
+    }
+
+    body::after {
+      opacity: 0.5;
+      animation-duration: 200s;
+    }
+
+    @keyframes stars {
+      from { transform: translateY(0); }
+      to { transform: translateY(-200px); }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* === Header === */
+    header {
+      width: 100%;
+      background: rgba(10, 10, 30, 0.8);
+      backdrop-filter: blur(6px);
+      text-align: center;
+      padding: 20px 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    header h1 {
+      font-size: 34px;
+      color: #a7c7ff;
+      margin: 0;
+      letter-spacing: 2px;
+      text-shadow: 0 0 10px rgba(167, 199, 255, 0.8);
+    }
+
+    nav {
+      margin-top: 8px;
+    }
+
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      margin: 0 12px;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+
+    nav a:hover {
+      color: #ffcc70;
+    }
+
+    /* === Form Section === */
+    section {
+      background: rgba(20, 20, 40, 0.85);
+      padding: 40px;
+      border-radius: 16px;
+      box-shadow: 0 0 25px rgba(0, 0, 50, 0.6);
+      width: 90%;
+      max-width: 600px;
+      margin-top: 70px;
+      text-align: center;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      animation: fadeInUp 1.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    section::before {
+      content: "";
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(255,255,255,0.08), transparent 60%);
+      animation: orbit 10s linear infinite;
+      z-index: 0;
+    }
+
+    @keyframes orbit {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(50px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    h2 {
+      font-size: 26px;
+      color: #9cd8ff;
+      margin-bottom: 25px;
+      text-shadow: 0 0 8px rgba(156, 216, 255, 0.8);
+      position: relative;
+      z-index: 2;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+      position: relative;
+      z-index: 2;
+    }
+
+    label {
+      text-align: left;
+      font-weight: 600;
+      color: #ddd;
+      font-size: 14px;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 12px 15px;
+      border-radius: 8px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      background-color: rgba(255, 255, 255, 0.1);
+      color: #fff;
+      font-size: 15px;
+      outline: none;
+      transition: all 0.3s ease;
+    }
+
+    input:focus, textarea:focus {
+      border-color: #a7c7ff;
+      box-shadow: 0 0 10px rgba(167, 199, 255, 0.4);
+      background-color: rgba(255, 255, 255, 0.15);
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 120px;
+    }
+
+    button {
+      background: linear-gradient(90deg, #6a5acd, #00bfff);
+      color: #fff;
+      padding: 12px;
+      border: none;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 16px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 0 15px rgba(0, 191, 255, 0.3);
+    }
+
+    button:hover {
+      background: linear-gradient(90deg, #00bfff, #6a5acd);
+      transform: scale(1.05);
+      box-shadow: 0 0 20px rgba(0, 191, 255, 0.6);
+    }
+
+    .success {
+      margin-top: 15px;
+      color: #80ffb3;
+      font-weight: 600;
+      text-shadow: 0 0 6px rgba(128, 255, 179, 0.6);
+    }
+
+    /* === Sosial Media === */
+    .social-links {
+      margin-top: 30px;
+      display: flex;
+      justify-content: center;
+      gap: 25px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .social-links a {
+      color: #fff;
+      font-size: 28px;
+      transition: 0.3s;
+    }
+
+    .social-links a:hover {
+      color: #00bfff;
+      transform: scale(1.2);
+      text-shadow: 0 0 10px #00bfff;
+    }
+
+    /* === Footer === */
+    footer {
+      margin-top: auto;
+      background: rgba(10, 10, 30, 0.9);
+      text-align: center;
+      padding: 15px;
+      color: #ccc;
+      font-size: 14px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow: 0 -2px 10px rgba(0,0,0,0.4);
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>Hubungi Bhagas 🌌</h1>
+    <nav>
+      <a href="index.html">Home</a> |
+      <a href="about.html">About</a> |
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <section>
+    <h2>Kirim Pesanmu ke Antariksa 🚀</h2>
+
+    <form id="contactForm">
+      <label for="nama">Nama Lengkap:</label>
+      <input type="text" id="nama" name="nama" placeholder="Masukkan nama kamu..." required>
+
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" placeholder="Masukkan email kamu..." required>
+
+      <label for="pesan">Pesan:</label>
+      <textarea id="pesan" name="pesan" placeholder="Tulis pesanmu di sini..." required></textarea>
+
+      <button type="submit">Kirim Sekarang</button>
+      <p class="success" id="msg"></p>
+    </form>
+
+    <!-- Ikon Sosial Media -->
+    <div class="social-links">
+      <a href="https://www.instagram.com/bhagasaulia_?igsh=MXJobmRxdzJyMzNmYg==" target="_blank" title="Instagram">
+        <i class="fab fa-instagram"></i>
+      </a>
+      <a href="https://wa.me/6283165758021" target="_blank" title="WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+      </a>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Bhagas Aulia | Urban Graffiti Vibes ✨</p>
+  </footer>
+
+  <!-- Script EmailJS -->
+  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+  <script>
+    (function(){
+      emailjs.init("Z3vSWuyi1diwouW_p"); // Public Key kamu
+    })();
+
+    const form = document.getElementById("contactForm");
+    const msg = document.getElementById("msg");
+
+    form.addEventListener("submit", function(e) {
+      e.preventDefault();
+
+      emailjs.sendForm("service_jr86uv4", "template_eqkdbr5", this)
+      .then(() => {
+        msg.innerText = "Pesan kamu berhasil dikirim ke orbit 🎉";
+        form.reset();
+      }, () => {
+        msg.innerText = "Ups, sinyal galaksi terganggu 😅";
+      });
+    });
+  </script>
+</body>
+</html>

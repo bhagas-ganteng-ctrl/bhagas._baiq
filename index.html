@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <link rel="shortcut icon" type="x-icon" href="Image/Foto Bhagas.jpg">
+  <title>Profil Bhagas Aulia</title>
+
+  <!-- Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@300;400;600;700&family=Permanent+Marker&display=swap" rel="stylesheet">
+
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Urbanist', sans-serif;
+      background: radial-gradient(circle at bottom, #0a0b1a, #1a1c2c 60%);
+      min-height: 200vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      color: #fff;
+      overflow-x: hidden;
+      position: relative;
+      opacity: 0;
+      transform: translateY(40px);
+      animation: pageFadeIn 1s ease-out forwards;
+    }
+
+    /* Background Bintang */
+    .stars, .stars2 {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .stars {
+      background: url("https://www.transparenttextures.com/patterns/tiny-stars.png");
+      background-size: cover;
+      animation: moveStars 60s linear infinite;
+    }
+
+    .stars2 {
+      background: url("https://www.transparenttextures.com/patterns/stardust.png");
+      background-size: cover;
+      opacity: 0.5;
+      animation: moveStars2 100s linear infinite;
+    }
+
+    /* Header */
+    header {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(8px);
+      width: 100%;
+      text-align: center;
+      padding: 25px 0;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+      z-index: 2;
+      animation: slideDown 1.2s ease forwards;
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+
+    header h1 {
+      margin: 0;
+      font-family: 'Permanent Marker', cursive;
+      color: #f4f4f4;
+      font-size: 38px;
+      letter-spacing: 2px;
+      text-shadow: 2px 2px 8px rgba(255, 0, 100, 0.6);
+    }
+
+    nav a {
+      color: #dcdcdc;
+      margin: 0 12px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: 0.3s;
+    }
+
+    nav a:hover {
+      color: #ff006e;
+      text-shadow: 0 0 10px #ff006e;
+    }
+
+    /* Profil Container */
+    .profil {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(12px);
+      border-radius: 18px;
+      padding: 40px;
+      margin-top: 100px;
+      text-align: center;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+      width: 85%;
+      max-width: 680px;
+      border: 2px dashed rgba(255, 255, 255, 0.3);
+      z-index: 1;
+      position: relative;
+      opacity: 0;
+      transform: translateY(60px);
+      animation: fadeUp 1.3s ease 0.3s forwards;
+      transition: transform 0.3s ease;
+    }
+
+    /* Efek 3D Foto Profil */
+    .foto-bingkai {
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      overflow: hidden;
+      margin: 0 auto 20px;
+      position: relative;
+      perspective: 800px;
+      transform-style: preserve-3d;
+      transition: transform 0.5s ease, box-shadow 0.5s ease;
+      box-shadow:
+        0 0 20px rgba(255, 0, 110, 0.4),
+        0 0 50px rgba(0, 188, 212, 0.3);
+      border: 3px solid rgba(255, 255, 255, 0.2);
+    }
+
+    /* Efek hover 3D interaktif */
+    .foto-bingkai:hover {
+      transform: rotateY(15deg) rotateX(10deg) scale(1.1);
+      box-shadow:
+        0 0 40px rgba(255, 0, 110, 0.7),
+        0 0 80px rgba(0, 188, 212, 0.6);
+    }
+
+    .foto-bingkai img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 50%;
+      transform: translateZ(20px);
+      transition: transform 0.5s ease;
+    }
+
+    .foto-bingkai:hover img {
+      transform: translateZ(40px) scale(1.05);
+    }
+
+    /* Teks Profil */
+    .profil h2 {
+      margin: 10px 0;
+      font-weight: 700;
+      font-size: 28px;
+      color: #fff;
+    }
+
+    .profil p {
+      font-size: 18px;
+      color: #ddd;
+      line-height: 1.8;
+      margin: 15px 0;
+    }
+
+    .highlight {
+      color: #00bcd4;
+      font-weight: 600;
+    }
+
+    /* Tombol */
+    .tombol, .like-btn {
+      display: inline-block;
+      background-color: #ff006e;
+      color: white;
+      padding: 12px 30px;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      margin-top: 20px;
+      transition: all 0.3s ease;
+      box-shadow: 0 5px 15px rgba(255, 0, 110, 0.4);
+      opacity: 0;
+      transform: scale(0.9);
+      animation: fadePop 1s ease 1s forwards;
+      cursor: pointer;
+      border: none;
+    }
+
+    .tombol:hover, .like-btn:hover {
+      background-color: #ff3b9d;
+      transform: scale(1.05);
+      box-shadow: 0 8px 20px rgba(255, 0, 110, 0.6);
+    }
+
+    /* Footer */
+    footer {
+      margin-top: 100px;
+      width: 100%;
+      background: rgba(255, 255, 255, 0.1);
+      text-align: center;
+      padding: 18px;
+      color: #ccc;
+      font-size: 14px;
+      opacity: 0;
+      animation: fadeIn 1s ease 1.5s forwards;
+    }
+
+    /* Efek Animasi */
+    @keyframes pageFadeIn { to { opacity: 1; transform: translateY(0); } }
+    @keyframes slideDown { to { opacity: 1; transform: translateY(0); } }
+    @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
+    @keyframes fadePop { to { opacity: 1; transform: scale(1); } }
+    @keyframes fadeIn { to { opacity: 1; } }
+    @keyframes moveStars { from { background-position: 0 0; } to { background-position: -2000px 2000px; } }
+    @keyframes moveStars2 { from { background-position: 0 0; } to { background-position: 2000px -2000px; } }
+  </style>
+</head>
+
+<body>
+  <div class="stars"></div>
+  <div class="stars2"></div>
+
+  <header>
+    <h1>Yo! Bhagas Space</h1>
+    <nav>
+      <a href="index.html">Home</a> |
+      <a href="about.html">About</a> |
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <section class="profil">
+    <div class="foto-bingkai">
+      <img src="Image/Foto Bhagas.jpg" alt="Foto Profil Bhagas Aulia">
+    </div>
+    <h2>Bhagas Aulia</h2>
+    <p>Eyyoo..., welcome to my little corner of the web 👋</p>
+    <p>
+      Kenalin nih gue Bhagas, dan sekarang gue lagi asik ngulik dunia teknologi & desain web. 
+      Buat gue, <span class="highlight">coding</span> itu bukan cuma angka dan logika, tapi juga seni buat nyiptain sesuatu yang keren dan bermakna.  
+      Kadang kalau otak udah panas, gue ngadem sambil <span class="highlight">nyanyi</span> — karena musik tuh kayak recharge buat semangat.  
+      Santai tapi tetap produktif, itu gaya gue.
+    </p>
+
+    <a href="profil lengkap.html" class="tombol">Lihat Profil Lengkap 🚀</a>
+    <br>
+    <button class="like-btn" id="likeButton">❤️ Like Halaman Ini</button>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Bhagas Aulia | Urban Space Vibes</p>
+  </footer>
+
+  <audio id="likeSound" src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_5e324e3b6a.mp3?filename=click-124467.mp3"></audio>
+
+  <script>
+    const likeButton = document.getElementById("likeButton");
+    const likeSound = document.getElementById("likeSound");
+
+    likeButton.addEventListener("click", (e) => {
+      likeSound.currentTime = 0;
+      likeSound.play();
+
+      likeButton.classList.toggle("liked");
+      likeButton.textContent = likeButton.classList.contains("liked")
+        ? "Thanks Bro 🙌"
+        : "❤️ Like Halaman Ini";
+
+      const heart = document.createElement("div");
+      heart.classList.add("heart");
+      heart.textContent = "💖";
+      document.body.appendChild(heart);
+
+      const rect = e.target.getBoundingClientRect();
+      heart.style.left = `${rect.left + rect.width / 2}px`;
+      heart.style.top = `${rect.top}px`;
+
+      setTimeout(() => heart.remove(), 1000);
+
+      const rocket = document.createElement("div");
+      rocket.classList.add("flying-rocket");
+      rocket.style.left = `${rect.left + rect.width / 2 - 25}px`;
+      rocket.style.top = `${rect.top}px`;
+      document.body.appendChild(rocket);
+
+      setTimeout(() => rocket.remove(), 1500);
+    });
+  </script>
+</body>
+</html>

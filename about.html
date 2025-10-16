@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="shortcut icon" type="x-icon" href="Image/Foto Bhagas.jpg">
+  <title>Tentang Bhagas Aulia</title>
+
+  <!-- Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@300;400;600;700&family=Permanent+Marker&display=swap" rel="stylesheet">
+
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+
+    /* Dasar Halaman */
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Urbanist', sans-serif;
+      background: radial-gradient(circle at bottom, #0a0b1a, #1a1c2c 60%);
+      color: #f4f4f4;
+      overflow-x: hidden;
+      overflow-y: auto;
+      min-height: 200vh;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      opacity: 0;
+      transform: translateY(40px);
+      animation: pageFadeIn 1s ease-out forwards;
+    }
+
+    /* Efek Parallax */
+    .stars, .stars2, .rocket {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .stars {
+      background: url("https://www.transparenttextures.com/patterns/tiny-stars.png");
+      background-size: cover;
+      animation: moveStars 60s linear infinite;
+    }
+
+    .stars2 {
+      background: url("https://www.transparenttextures.com/patterns/stardust.png");
+      background-size: cover;
+      opacity: 0.4;
+      animation: moveStars2 100s linear infinite;
+    }
+
+    .rocket {
+      background: url("https://cdn-icons-png.flaticon.com/512/3213/3213446.png") no-repeat;
+      background-size: 80px;
+      animation: flyRocket 20s linear infinite;
+      width: 80px;
+      height: 80px;
+      position: fixed;
+      bottom: -100px;
+      left: -100px;
+    }
+
+    /* Header */
+    header {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(8px);
+      width: 100%;
+      text-align: center;
+      padding: 25px 0;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+      position: relative;
+      z-index: 2;
+      opacity: 0;
+      transform: translateY(-20px);
+      animation: slideDown 1.2s ease forwards;
+    }
+
+    header h1 {
+      margin: 0;
+      font-family: 'Permanent Marker', cursive;
+      color: #f4f4f4;
+      font-size: 38px;
+      letter-spacing: 2px;
+      text-shadow: 2px 2px 8px rgba(255, 0, 100, 0.6);
+    }
+
+    nav a {
+      color: #dcdcdc;
+      margin: 0 12px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: 0.3s;
+    }
+
+    nav a:hover {
+      color: #ff006e;
+      text-shadow: 0 0 10px #ff006e;
+    }
+
+    /* Artikel */
+    article {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(12px);
+      border-radius: 18px;
+      padding: 40px 50px;
+      margin-top: 80px;
+      text-align: left;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+      width: 85%;
+      max-width: 700px;
+      border: 2px dashed rgba(255, 255, 255, 0.3);
+      transition: transform 0.3s ease;
+      z-index: 1;
+      position: relative;
+      opacity: 0;
+      transform: translateY(60px);
+      animation: fadeUp 1.3s ease 0.3s forwards;
+    }
+
+    article:hover {
+      transform: translateY(-5px);
+    }
+
+    article h2 {
+      font-family: 'Permanent Marker', cursive;
+      font-size: 26px;
+      color: #ff006e;
+      margin-top: 20px;
+      margin-bottom: 10px;
+      text-shadow: 1px 1px 6px rgba(255, 0, 100, 0.6);
+      border-left: 4px solid #00bcd4;
+      padding-left: 10px;
+    }
+
+    article p, article li {
+      font-size: 17px;
+      line-height: 1.8;
+      color: #e8e8e8;
+    }
+
+    ul {
+      list-style-type: square;
+      margin-left: 25px;
+      padding-left: 0;
+    }
+
+    li {
+      margin-bottom: 8px;
+    }
+
+    /* Tombol Like */
+    .tombol {
+      display: inline-block;
+      background-color: #ff006e;
+      color: white;
+      padding: 12px 28px;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      margin-top: 25px;
+      box-shadow: 0 4px 12px rgba(255, 0, 110, 0.4);
+      transition: all 0.3s ease;
+      cursor: pointer;
+      opacity: 0;
+      transform: scale(0.9);
+      animation: fadePop 1s ease 1s forwards;
+    }
+
+    .tombol:hover {
+      background-color: #ff3b9d;
+      transform: scale(1.05);
+      box-shadow: 0 6px 18px rgba(255, 0, 110, 0.6);
+    }
+
+    .tombol.clicked {
+      background-color: #00b894;
+      box-shadow: 0 0 15px rgba(0, 255, 150, 0.7);
+      animation: pulse 0.4s ease;
+    }
+
+    /* Footer */
+    footer {
+      margin-top: 100px;
+      width: 100%;
+      background: rgba(255, 255, 255, 0.1);
+      text-align: center;
+      padding: 18px;
+      color: #ccc;
+      font-size: 14px;
+      letter-spacing: 0.5px;
+      position: relative;
+      z-index: 2;
+      opacity: 0;
+      animation: fadeIn 1s ease 1.5s forwards;
+    }
+
+    /* Animasi */
+    @keyframes pageFadeIn { to { opacity: 1; transform: translateY(0); } }
+    @keyframes slideDown { to { opacity: 1; transform: translateY(0); } }
+    @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
+    @keyframes fadePop { to { opacity: 1; transform: scale(1); } }
+    @keyframes fadeIn { to { opacity: 1; } }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.15); }
+      100% { transform: scale(1); }
+    }
+
+    /* Parallax Bintang & Roket */
+    @keyframes moveStars {
+      from { background-position: 0 0; }
+      to { background-position: -2000px 2000px; }
+    }
+
+    @keyframes moveStars2 {
+      from { background-position: 0 0; }
+      to { background-position: 2000px -2000px; }
+    }
+
+    @keyframes flyRocket {
+      0% { transform: translate(-100px, 600px) rotate(45deg); opacity: 0; }
+      20% { opacity: 1; }
+      50% { transform: translate(300px, 200px) rotate(45deg); }
+      80% { transform: translate(800px, -100px) rotate(45deg); }
+      100% { transform: translate(1200px, -600px) rotate(45deg); opacity: 0; }
+    }
+
+    /* Efek fade-out saat pindah halaman */
+    .fade-out {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Latar Parallax -->
+  <div class="stars"></div>
+  <div class="stars2"></div>
+  <div class="rocket"></div>
+
+  <header>
+    <h1>Tentang Bhagas</h1>
+    <nav>
+      <a href="index.html">Home</a> |
+      <a href="about.html" class="active">About</a> |
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <article>
+    <h2>Pendidikan</h2>
+    <p>
+      Sekarang gue lagi kuliah di <strong>UIN Imam Bonjol Padang</strong>, ngambil jurusan Ilmu Perpustakaan. 
+      Di kampus, gue lagi fokus banget ngulik gimana teknologi bisa bantu ngatur dan nyebarin informasi dengan cara yang lebih efisien dan menarik.
+    </p>
+
+    <h2>Keterampilan</h2>
+    <ul>
+      <li><strong>HTML, CSS, JavaScript</strong> — bikin website responsif yang tetap estetik</li>
+      <li><strong>Desain Grafis</strong> — ngulik Canva dan Photoshop buat nambahin sentuhan visual</li>
+      <li><strong>Content Writing</strong> — nulis artikel, caption, dan copy buat promosi digital</li>
+    </ul>
+
+    <h2>Hobi</h2>
+    <p>
+      Gue suka <em>membaca</em> buku inspiratif, <em>menulis</em> hal-hal random yang kadang malah jadi ide keren, 
+      dan <em>mendesain</em> sesuatu yang simple tapi punya vibe “gue banget”.  
+      Kadang juga ngelakuin coding santai sambil dengerin musik — biar tetep chill tapi produktif.
+    </p>
+
+  </article>
+
+  <footer>
+    <p>&copy; 2025 Bhagas Aulia | Urban Graffiti Vibes</p>
+  </footer>
+
+  <script>
+    // Efek transisi keluar saat klik menu
+    document.querySelectorAll('nav a').forEach(link => {
+      link.addEventListener('click', e => {
+        e.preventDefault();
+        const target = e.target.href;
+        document.body.classList.add('fade-out');
+        setTimeout(() => window.location.href = target, 500);
+      });
+    });
+  </script>
+</body>
+</html>
